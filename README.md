@@ -12,5 +12,18 @@ Currently, two official plugins are available:
 ```bash
 npm create vite@latest ERN24_Spotify_frontend
 npm i
+// lancer le serveur
 npm run dev
+// gerer les routes
+npm i react-router-dom
+// gerer nos données
+npm i react-redux  @reduxjs/toolkit
+// gerer les pages
+npm i html-react-parser
+// gerer les zone depliables
+npm i react-collapse
+// gerer les icones
+npm i react-icons
+// gerer les loader
+npm i react-loader-spinner
 ```
