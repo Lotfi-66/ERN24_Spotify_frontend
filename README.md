@@ -13,4 +13,4 @@ Currently, two official plugins are available:
 npm create vite@latest ERN24_Spotify_frontend
 npm i
 npm run dev
-``
+```
