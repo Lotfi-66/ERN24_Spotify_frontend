@@ -1,11 +1,13 @@
 import React from 'react'
+import { Routes, Route } from 'react-router-dom'
+import Home from './screens/OnlineScreens/Home'
+
 
 const App = () => {
   return (
-    <>
-    <div className="text-3xl font-bold underline">App</div>
-    <div>toto</div>
-    </>
+    <Routes>
+      <Route path="/" element={<Home />} />
+    </Routes>
   )
 }
 
