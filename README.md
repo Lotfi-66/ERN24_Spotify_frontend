@@ -27,3 +27,10 @@ npm i react-icons
 // gerer les loader
 npm i react-loader-spinner
 ```
+
+Rendez-vous sur https://tailwindcss.com/docs/guides/vite
+
+```bash
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+```
