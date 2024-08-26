@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 import { USER_INFOS } from "../constants/appConstant";
 
 
@@ -15,7 +15,7 @@ const AuthContext = createContext({
 });
 
 //on définit toute la mécanique de notre context
-export default AuthContextProvider = ({ children }) => {
+const AuthContextProvider = ({ children }) => {
     const [userId, setUserId] = useState('');
     const [email, setEmail] = useState('');
     const [nickname, setNickname] = useState('');
