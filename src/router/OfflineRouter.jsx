@@ -11,17 +11,13 @@ const OfflineRouter = createBrowserRouter(
         {
             element: (
                 <>
-                    <App />
+                    <HomeOffline />
                 </>
             ),
             errorElement: <ErrorPage />,
             children: [
                 {
                     path: "/",
-                    element: <HomeOffline />
-                },
-                {
-                    path: "/login",
                     element: <Login />
                 },
                 {
