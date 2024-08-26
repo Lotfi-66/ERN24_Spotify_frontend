@@ -26,6 +26,8 @@ npm i react-collapse
 npm i react-icons
 // gerer les loader
 npm i react-loader-spinner
+// axios pour les requetes http
+npm i axios
 ```
 
 Rendez-vous sur https://tailwindcss.com/docs/guides/vite
@@ -34,3 +36,5 @@ Rendez-vous sur https://tailwindcss.com/docs/guides/vite
 npm install -D tailwindcss postcss autoprefixer
 npx tailwindcss init -p
 ```
+
+** Commande rafce pour vscode memo **
