@@ -4,6 +4,7 @@ import { USER_INFOS } from './constants/appConstant'
 import { checkUser } from './services/userService'
 import { userAuthContext } from './contexts/AuthContext'
 import Sidebar from './components/Sidebar'
+import Topbar from './components/Topbar'
 
 const App = () => {
 
@@ -35,12 +36,12 @@ const App = () => {
         <Sidebar />
         {/* TODO: ici la sidebar */}
         <div className='flex flex-1 flex-col bg-gradient-to-b from-black to-[rgb(18,18,18)]'>
-        {/* TODO: ici la topbar */}
-        <div className='h-[calc(100vh-72px)] overflow-y-scroll hide-scrollbar flex xl:flex-row flex-col-reverse'>
-          <div className='flex-1 h-fit pb-40 text-white'>
-            <Outlet />
+          <Topbar />
+          <div className='h-[calc(100vh-72px)] overflow-y-scroll hide-scrollbar flex xl:flex-row flex-col-reverse'>
+            <div className='flex-1 h-fit pb-40 text-white'>
+              <Outlet />
+            </div>
           </div>
-        </div>
 
 
         </div>
