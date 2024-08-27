@@ -38,7 +38,7 @@ const AuthContextProvider = ({ children }) => {
             setUserId('');
             setEmail('');
             setNickname('');
-            localStorage.setItem(USER_INFOS);
+            localStorage.removeItem(USER_INFOS);
         } catch (error) {
             throw new Error('Erreur lors de la déconnexion : ${error}');
         }

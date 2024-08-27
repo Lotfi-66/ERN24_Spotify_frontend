@@ -57,20 +57,20 @@ const Register = () => {
             <form className='max-w-md mx-auto text-center' onSubmit={handleSubmit}>
             <CustomInput
                 state={nickname}
-                label="Votre pseudo"
-                type="text"
+                label={"Votre pseudo"}
+                type={"text"}
                 callable={(event) => setNickname(event.target.value)}
             />
             <CustomInput
                 state={email}
-                label="Email"
-                type="email"
+                label={"Email"}
+                type={"email"}
                 callable={(event) => setEmail(event.target.value)}
             />
             <CustomInput
                 state={password}
-                label="Mot de passe"
-                type="password"
+                label={"Mot de passe"}
+                type={"password"}
                 callable={(event) => setPassword(event.target.value)}
             />
             <p className='text-white'>Vous avez déjà un compte ?
