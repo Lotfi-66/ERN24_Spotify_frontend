@@ -34,10 +34,10 @@ const Login = () => {
                 callable={(event) => setEmail(event.target.value)}
             />
             <CustomInput
-                state={email}
+                state={password}
                 label="Mot de passe"
                 type="password"
-                callable={(event) => setEmail(event.target.value)}
+                callable={(event) => setPassword(event.target.value)}
             />
             <p className='text-white'>Vous n'avez pas de compte ?
                 <Link to="/register" className='text-white font-bold hover:text-green'> Créer un compte</Link>
