@@ -69,7 +69,7 @@ const Login = () => {
                 <p className='text-white'>Vous n'avez pas de compte ?
                     <Link to="/register" className='text-white font-bold hover:text-green'> Créer un compte</Link>
                 </p>
-                <div className='flex items-center jutify-center pt-5'>
+                <div className='flex items-center justify-center pt-5'>
                     {isLoading ? <ButtonLoader /> :
                         <button type='submit' className='bg-green hover:bg-green_toptext-white font-bold py-2 px-4 rounded w-full text-center'>
                             Connexion
