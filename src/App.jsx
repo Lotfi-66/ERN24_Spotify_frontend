@@ -3,6 +3,7 @@ import { Outlet, useNavigate } from 'react-router-dom'
 import { USER_INFOS } from './constants/appConstant'
 import { checkUser } from './services/userService'
 import { userAuthContext } from './contexts/AuthContext'
+import Sidebar from './components/Sidebar'
 
 const App = () => {
 
@@ -31,6 +32,7 @@ const App = () => {
   return (
     <>
       <div className='relative flex'>
+        <Sidebar />
         {/* TODO: ici la sidebar */}
         <div className='flex flex-1 flex-col bg-gradient-to-b from-black to-[rgb(18,18,18)]'>
         {/* TODO: ici la topbar */}
