@@ -10,6 +10,7 @@ const PlayPause = ({
     handlePlay, //fonction pour lancer le player
     index //index de la chanson en cours de lecture
 }) => {
+
     return (
         //on check si on est en cours de lecture
         //si le titre de la chanson en cours de lecture (activeSong) correspond au titre de la chanson dans le tableau(songs) a l'index donné (index)

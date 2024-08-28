@@ -12,10 +12,13 @@ const Home = () => {
     // On veut des le montage du composant, récupérer les albums
     useEffect(() => {
         dispatch(fetchAlbums());
-    }, []);
+    }, [dispatch]);
 
-    // On doit récupérer les données depuis le Selector
+    // On doit récupérer les données de l'album depuis le Selector
     const { loading, albums } = useSelector(selectAlbumsData);
+    //on doit récupérer les infos du player
+    const {activeSong, isPlaying} = useSelector((state) => state.player);
+
     const dataAlbum = albums['hydra:member'];
 
     return (
@@ -31,6 +34,14 @@ const Home = () => {
                         key={index}
                         //on pass data comme props de l'album
                         data={data}
+                        //songs: le tableau de chansons de l'album
+                        songs={data.songs}
+                        // isPlaying: pour savoir si une chanson est en lecture
+                        isPlaying={isPlaying}
+                        //activeSong: la chanson en cours de lecture
+                        activeSong={activeSong}
+                        //index: l'index de la chanson en cours de lecture
+                        index={0}
                         />
                     )
                 }

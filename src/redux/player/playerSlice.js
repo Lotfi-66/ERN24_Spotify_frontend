@@ -24,7 +24,7 @@ const playerSlice = createSlice({
             state.activeSong = action.payload?.songs[action.payload?.index];
             //stockage du tableau de chansons dans currentSongs
             state.currentSongs = action.payload?.songs;
-            //stockage de l'indx de la chanson en lecture dans currentIndex
+            //stockage de l'index de la chanson en lecture dans currentIndex
             state.currentIndex = action.payload?.index;
             //stockage de l'etat du player à true
             state.isActive = true;
