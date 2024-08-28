@@ -7,8 +7,9 @@ const albumSlice = createSlice({
     name: "albums",
     //on initialise les valeurs par defaut
     initialState: {
-        loading: false,
-        albums: [],
+        loading: false,// un flag pour gerer l'attente des requetes 
+        albums: [],//un compartiment de rayon pour stocker la liste de tous les albums
+        albumDetail: {}, // un compartiment de rayon pour stocker les détails d'un album
     },
     //méthode qui permet de remplir les states
     reducers: {
@@ -18,11 +19,16 @@ const albumSlice = createSlice({
         },
         setAlbums: (state, action) => {
             state.albums = action.payload
+        },
+
+        setAlbumDetail: (state, action) => {
+            state.albumDetail = action.payload
         }
     }
 });
 
-export const { setLoading, setAlbums } = albumSlice.actions
+export const { setLoading, setAlbums, setAlbumDetail } = albumSlice.actions
+
 
 //on crée les methodes qui permettront de récupéréer les données dans la bdd
 
@@ -40,6 +46,22 @@ export const fetchAlbums = () => async dispatch => {
         console.log(`Erreur lors de la récupération des albums : ${error}`);
         dispatch(setLoading(false));
 
+    }
+}
+//on créé une méthode qui permet de récupérer les informations d'un album dans la bdd
+export const fetchAlbumDetail = (id) => async dispatch => {
+    try {
+        //on va passer le loading a true
+        dispatch(setLoading(true));
+        //on va faire une requete  a l'api
+        const response = await axios.get(`${API_URL}/albums/${id}`);
+        //on va setter les données dans le state
+        dispatch(setAlbumDetail(response.data));
+        //on va passer le loading a false
+        dispatch(setLoading(false));
+    } catch (error) {
+        console.log(`Erreur lors de la récupération des albums : ${error}`);
+        dispatch(setLoading(false));
     }
 }
 
