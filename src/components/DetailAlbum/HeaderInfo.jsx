@@ -10,7 +10,7 @@ const HeaderInfo = ({ dataAlbum }) => {
         : `${ALBUM_URL}/${dataAlbum?.imagePath}`;
 
     //on récupère l'année de sortie de l'album
-    const releaseDate = new Date(dataAlbum?.releaseDate).getFullYear() ?? 'Date inconnue';
+    const releaseDate = dataAlbum?.releaseDate ? new Date(dataAlbum?.releaseDate).getFullYear() : 'Date inconnue'
 
     //on récupère le nombre de pistes de l'album
     const nbTitle = () => {
