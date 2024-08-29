@@ -3,9 +3,6 @@ import { ALBUM_URL } from '../../constants/apiConstant';
 
 //déstructuration de activeSong, isActive, isPlaying, currebtAlbum 
 const Track = ({isPlaying,isActive,currentAlbum,activeSong}) => {
-    console.log('AAAAAA',activeSong);
-    console.log('BBBBBB',currentAlbum);
-    
 
     //on déclare nos constantes 
     const imgPath = `${ALBUM_URL}/${currentAlbum?.imagePath}`;
@@ -24,6 +21,14 @@ const Track = ({isPlaying,isActive,currentAlbum,activeSong}) => {
                     alt={`image de l'album ${albumName}`}
                     className="rounded-full"
                 />
+            </div>
+            <div className="w-[50%]">
+                <p className=" truncate text-white font-bold text-lg">
+                    {title}
+                </p>
+                <p className="truncate text-gray-500">
+                    {artistName}
+                </p>
             </div>
         </div>
     )

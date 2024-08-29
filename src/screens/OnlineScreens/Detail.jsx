@@ -19,7 +19,7 @@ const Detail = () => {
 
     //on récupère les données de l'albums depuis le selector
     const {loading, albumDetail} = useSelector(selectAlbumsData);
-    console.log(albumDetail);
+    // console.log(albumDetail);
 
     return (
         loading ? <PageLoader /> :
