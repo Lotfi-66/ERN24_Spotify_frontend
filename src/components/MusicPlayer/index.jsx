@@ -4,6 +4,7 @@ import { nextSong, playPause, prevSong } from '../../redux/player/playerSlice'
 import Track from './Track'
 import Controls from './Controls'
 import SeekBar from './SeekBar'
+import Player from './Player'
 
 const MusicPlayer = () => {
     //on va récupérer toutes les données de notre slice player
@@ -83,6 +84,7 @@ const MusicPlayer = () => {
                 onInput={(e) => setSeekTime(e.target.value)} //pour récupérer la position de la barre
                 setSeekTime={setSeekTime} //setter pour la position de la barre
                 />
+                <Player/>
             </div>
         </div>
     )
