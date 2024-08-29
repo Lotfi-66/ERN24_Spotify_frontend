@@ -18,7 +18,7 @@ const SeekBar = ({ value, min, max, onInput, setSeekTime, appTime }) => {
             <input
                 type="range"
                 step="any"
-                valu={value}
+                value={value}
                 min={min}
                 max={max}
                 onInput={onInput}

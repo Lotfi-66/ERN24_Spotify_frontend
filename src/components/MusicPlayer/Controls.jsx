@@ -25,7 +25,7 @@ const Controls = ({ isPlaying, repeat, setRepeat, shuffle, setShuffle, currentSo
                 ? (
                     //on affiche le bouton pause
                     <BsFillPauseFill
-                        size={35}
+                        size={45}
                         color={'#FFF'}
                         className='cursor-pointer'
                         onClick={handlePlayPause}
@@ -34,7 +34,7 @@ const Controls = ({ isPlaying, repeat, setRepeat, shuffle, setShuffle, currentSo
                 : (
                     //on affiche le bouton play
                     <BsFillPlayFill
-                        size={35}
+                        size={45}
                         color={'#FFF'}
                         className='cursor-pointer'
                         onClick={handlePlayPause}

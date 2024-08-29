@@ -5,6 +5,7 @@ import Track from './Track'
 import Controls from './Controls'
 import SeekBar from './SeekBar'
 import Player from './Player'
+import VolumeBar from './VolumeBar'
 
 const MusicPlayer = () => {
     //on va récupérer toutes les données de notre slice player
@@ -23,7 +24,7 @@ const MusicPlayer = () => {
 
     useEffect(() => {
         //si le store contient un tableau de chanson on dispatch playPause a true
-        if (currentSongs.length) dispatch(playPause(true))
+        if (currentSongs.length > 0) dispatch(playPause(true))
     }, [currentIndex]) //si currentIndex change => on reload le composant
 
     //méthode pour mettre pause ou play
@@ -78,14 +79,32 @@ const MusicPlayer = () => {
                     setRepeat={setRepeat} //setter pour le mode répétition
                 />
                 <SeekBar
-                value={appTime} //pour le temps actuel
-                min={0} //pour le temps actuel
-                max={duration} //pour la durée de la chanson
-                onInput={(e) => setSeekTime(e.target.value)} //pour récupérer la position de la barre
-                setSeekTime={setSeekTime} //setter pour la position de la barre
+                    value={appTime} //valeur de la barre de lecture
+                    min={'0'} //valeur minimum
+                    max={duration} //valeur maximum
+                    onInput={(event) => setSeekTime(event.target.value)} //pour récupérer la position de la barre de lecture
+                    setSeekTime={setSeekTime}//pour changer la position de la barre de lecture
+                    appTime={appTime} //position reel de la barre de lecture
                 />
-                <Player/>
+                <Player
+                    activeSong={activeSong} //chanson en cours de lecture
+                    volume={volume} //volume de la musique
+                    isPlaying={isPlaying} //savoir si le titre est en cours de lecture
+                    seekTime={seekTime} //position de la barre de lecture
+                    repeat={repeat} //etat pour le mode répétition
+                    currentIndex={currentIndex} //index de la chanson en cours de lecture
+                    onEnded={handleNextSong} //méthode pour avancer a la chanson suivante
+                    onTimeUpdate={(event) => setAppTime(event.target.currentTime)} //pour récupérer le temps actuel de la chanson
+                    onLoadedData={(event) => setDuration(event.target.duration)} //pour récupérer la durée de la chanson
+                />
             </div>
+            <VolumeBar
+                value={volume} //valeur du volume
+                min="0" //valeur minimum
+                max="1" //valeur maximum
+                onChange={(event) => setVolume(event.target.value)} //pour changer le volume
+                setVolume={setVolume} //setter pour le volume
+            />
         </div>
     )
 }

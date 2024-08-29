@@ -46,7 +46,7 @@ const HeaderInfo = ({ dataAlbum }) => {
     }
 
     return (
-        <div className="flex items-center">
+        <div className="flex flex-col lg:flex-row items-center">
             <Link to={'#'}>
             <img 
             src={imgPath} 
@@ -54,13 +54,13 @@ const HeaderInfo = ({ dataAlbum }) => {
             className='w-10 h-10 rounded-full object-cover'
             />
             </Link>
-            <p className='font-bold text-base p-1'>{dataAlbum?.artist?.name ?? 'Artiste inconnu'}</p>
+            <p className='truncate font-bold text-base p-1'>{dataAlbum?.artist?.name ?? 'Artiste inconnu'}</p>
             <Dot />
-            <p className='font-bold text-base p-1'>{releaseDate}</p>
+            <p className='truncate font-bold text-base p-1'>{releaseDate}</p>
             <Dot />
-            <p className='font-bold text-base p-1'>{nbTitle()}</p>
+            <p className='truncate font-bold text-base p-1'>{nbTitle()}</p>
             <Dot />
-            <p className='font-bold text-base p-1'>{durationAlbum()}</p>
+            <p className='truncate font-bold text-base p-1'>{durationAlbum()}</p>
         </div>
     )
 }
