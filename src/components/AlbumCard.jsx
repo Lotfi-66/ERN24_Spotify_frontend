@@ -12,7 +12,6 @@ const AlbumCard = ({ data, index, songs, isPlaying, activeSong }) => {
     //constante pour récupérer l'image de l'album
     const imgPath = `${ALBUM_URL}/${data.imagePath}`;
     //on redefinit des constantes pour les données de l'albums
-    console.log('ZZZZZZZZZZZZZZZZZZZZZ', data);
 
     const artistName = data?.artist?.name ?? 'Artiste inconnu'
     const albumName = data?.title ?? 'Album inconnu'

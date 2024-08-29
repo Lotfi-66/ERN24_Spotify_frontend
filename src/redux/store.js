@@ -1,13 +1,14 @@
-import { configureStore } from '@reduxjs/toolkit'
-import albumReducer from './albums/albumSlice'
-import playerReducer from './player/playerSlice'
+import { configureStore } from "@reduxjs/toolkit";
+import albumsReducer from "./albums/albumSlice";
+import playerReducer from "./player/playerSlice";
 
+//on crée notre magasin de données
 const store = configureStore({
     reducer: {
-        //on déclare ici les reducers
-        albums: albumReducer,
-        player: playerReducer
+        // on declarera ici les reducers
+        albums: albumsReducer,
+        player: playerReducer,
     }
 })
 
-export default store
+export default store;

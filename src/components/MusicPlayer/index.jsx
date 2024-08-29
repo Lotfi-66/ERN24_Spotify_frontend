@@ -39,8 +39,10 @@ const MusicPlayer = () => {
     //méthode pour avancer a la chanson suivante
     const handleNextSong = () => {
         //si on n'est pas en mode aléatoire
+        //j'ai rajouter une parenthèse pour eviter les erreurs car quand shuffle n'est pas activer
+        //il prend en compte nextSong
         if (!shuffle) {
-            dispatch(nextSong(currentIndex + 1) % currentSongs.length)
+            dispatch(nextSong((currentIndex + 1) % currentSongs.length))
         } else {
             dispatch(nextSong(Math.floor(Math.random() * currentSongs.length)))
         }
