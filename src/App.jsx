@@ -5,6 +5,9 @@ import { checkUser } from './services/userService'
 import { userAuthContext } from './contexts/AuthContext'
 import Sidebar from './components/Sidebar'
 import Topbar from './components/Topbar'
+import { useSelector } from 'react-redux'
+import MusicPlayer from './components/MusicPlayer'
+
 
 const App = () => {
 
@@ -14,6 +17,9 @@ const App = () => {
 
   //methode qui check si c'est le bon user sinon ont deconecte le user
   const navigate = useNavigate();
+
+  //on récupère activeSong
+  const { activeSong } = useSelector((state) => state.player);
 
   const fetchUser = async () => {
     const user = await checkUser(userInfo);
@@ -46,6 +52,11 @@ const App = () => {
 
         </div>
         {/* TODO: ici le player */}
+        {activeSong?.title && (
+          <div className="absolute h-28 bottom-0 left-0 right-0 animate-slideup bg-gradient-to-br from-white_01 to-black backdrop-blur-lg rounded-t-3xl z-10">
+            <MusicPlayer/>
+          </div>
+        )}
 
       </div>
     </>

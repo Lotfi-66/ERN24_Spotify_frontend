@@ -14,7 +14,7 @@ const PlayPause = ({
     return (
         //on check si on est en cours de lecture
         //si le titre de la chanson en cours de lecture (activeSong) correspond au titre de la chanson dans le tableau(songs) a l'index donné (index)
-        isPlaying && activeSong?.title === songs[index]?.title ?
+        isPlaying && activeSong && songs && activeSong?.title === songs[index]?.title ?
         //si vrai : on retourne l'icone pause avec la methode handlePause
         <BsPauseCircleFill 
         size={size}
