@@ -76,7 +76,7 @@ const ToolbarDetail = ({ dataAlbum }) => {
             {/* on récupère les infos du collapse */}
             <div>
                 <Collapse isOpened={isColllapsed}>
-                <InfoCollapse dataAlbum={dataAlbum} />
+                    <InfoCollapse dataAlbum={dataAlbum} />
                 </Collapse>
             </div>
         </>
