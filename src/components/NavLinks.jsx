@@ -2,13 +2,13 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { styleIcon } from '../constants/appConstant'
 
-const NavLinks = ({marginTop, array,handleClick}) => {
+const NavLinks = ({marginTop, array,handleClick, userId = 0}) => {
     return (
         <div className={marginTop}>
                         {array.map((item) => (
                             <NavLink
                                 key={item.title}
-                                to={item.path}
+                                to={item.path.replace(':id', userId)}
                                 end
                                 className='flex flex-row items-center justify-start font-medium test-sm text-white hover:bg-green_06 p-3'
                                     onClick={() => handleClick && handleClick()}

@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { playPause, setActiveAlbum, setActiveSong } from '../redux/player/playerSlice';
 import PlayPause from './PlayPause';
 
-const AlbumCard = ({ data, index, songs, isPlaying, activeSong }) => {
+const AlbumCard = ({ data, index, songs, isPlaying, activeSong, artist='inconnu' }) => {
     //on récupère le hook dispatch de react-redux
     const dispatch = useDispatch();
 
@@ -13,7 +13,7 @@ const AlbumCard = ({ data, index, songs, isPlaying, activeSong }) => {
     const imgPath = `${ALBUM_URL}/${data.imagePath}`;
     //on redefinit des constantes pour les données de l'albums
 
-    const artistName = data?.artist?.name ?? 'Artiste inconnu'
+    const artistName = data?.artist?.name ?? artist
     const albumName = data?.title ?? 'Album inconnu'
     const albumId = data?.id ?? 0
 

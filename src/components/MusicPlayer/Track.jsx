@@ -1,13 +1,21 @@
 import React from 'react'
 import { ALBUM_URL } from '../../constants/apiConstant';
+import { useSelector } from 'react-redux';
+import { selectArtistData } from '../../redux/artist/artistSelector';
 
-const Track = ({ isPlaying, isActive, activeSong, currentAlbum }) => {
+const Track = ({ isPlaying, isActive, activeSong, currentAlbum, artist = 'Artiste inconnu' }) => {
 
+
+    const {artistDetail} = useSelector(selectArtistData);
     //on déclare nos constantes
     const imgPath = `${ALBUM_URL}/${currentAlbum?.imagePath}`;
     const title = activeSong?.title ?? 'Musique sans titre';
-    const artistName = currentAlbum?.artist?.name ?? 'Artiste inconnu';
     const albumName = currentAlbum?.title ?? 'inconnu';
+    const artistName = currentAlbum?.artist?.name //on regarde si on a un artiste dans l'album
+    ? currentAlbum?.artist?.name
+    : artistDetail?.name
+    ? artistDetail?.name
+    :artist;
 
     return (
         <div className='flex flex-1 items-center justify-start'>

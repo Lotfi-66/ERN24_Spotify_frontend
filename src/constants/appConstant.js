@@ -18,7 +18,7 @@ export const dataAlbumNav = [
 export const dataUserNav = [
     {title: 'Crée une playlist', path:'/add-playlist', icon: AiOutlineAppstoreAdd},
     {title: 'Titres likés', path:'/wishlist', icon: MdFavoriteBorder},
-    {title: 'Mon compte', path:'/account', icon: FiSettings}, //TODO : prévoir la route
+    {title: 'Mon compte', path:'/account/:id', icon: FiSettings}, //TODO : prévoir la route
 ];
 
 //3 : on récupère le chemin de notre logo

@@ -28,7 +28,7 @@ const Sidebar = () => {
                         className='w-full h-14 object-contain'
                     />
                     <NavLinks marginTop={'mt-5'} array={dataAlbumNav} />
-                    <NavLinks marginTop={'mt-10'} array={dataUserNav} />
+                    <NavLinks marginTop={'mt-10'} array={dataUserNav} userId={userId} />
                 </div>
                 {/* Ajout d'un bouton de deconnexion */}
                 <div className="mt-5">
@@ -72,7 +72,7 @@ const Sidebar = () => {
                         className='w-full h-14 object-contain'
                     />
                     <NavLinks marginTop={'mt-5'} array={dataAlbumNav} handleClick={() => setMobileMenu(false)}/>
-                    <NavLinks marginTop={'mt-10'} array={dataUserNav} handleClick={() => setMobileMenu(false)}/>
+                    <NavLinks marginTop={'mt-10'} array={dataUserNav} handleClick={() => setMobileMenu(false)} userId={userId} />
                 </div>
                 <div className="mt-5">
                     <button
