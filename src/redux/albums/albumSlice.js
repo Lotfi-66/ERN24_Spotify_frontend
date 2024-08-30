@@ -10,6 +10,9 @@ const albumSlice = createSlice({
         loading: false, // un flag pour gerer l'attente des requetes
         albums: [], // un compartiment de rayon pour stocker la liste de tous les albums
         albumDetail: {}, // un compartiment de rayon pour stocker les détails d'un album
+        searchAlbum: [], // un compartiment de rayon pour stocker les résultats de recherche sur album
+        searchArtist: [], // un compartiment de rayon pour stocker les résultats de recherche sur artiste
+        searchTitle: [], // un compartiment de rayon pour stocker les résultats de recherche sur les titre
     },
     //méthode qui permet de remplir les states
     reducers: {
@@ -21,11 +24,20 @@ const albumSlice = createSlice({
         },
         setAlbumDetail: (state, action) => {
             state.albumDetail = action.payload;
-        }
+        },
+        setSearchAlbum: (state, action) => {
+            state.searchAlbum = action.payload;
+        },
+        setSearchArtist: (state, action) => {
+            state.searchArtist = action.payload;
+        },
+        setSearchTitle: (state, action) => {
+            state.searchTitle = action.payload;
+        },
     }
 });
 
-export const { setLoading, setAlbums, setAlbumDetail } = albumSlice.actions;
+export const { setLoading, setAlbums, setAlbumDetail, setSearchAlbum, setSearchArtist, setSearchTitle } = albumSlice.actions;
 
 //on crée les méthodes qui permettront de récupérer les données dans la bdd
 export const fetchAlbums = () => async dispatch => {
@@ -33,7 +45,7 @@ export const fetchAlbums = () => async dispatch => {
         //on va passer le loading à true
         dispatch(setLoading(true));
         //on va faire une requête à l'api
-        const response = await axios.get(`${API_URL}/albums?page=1`)
+        const response = await axios.get(`${API_URL}/albums?page=1&isActive=true`)
         //on va setter les données dans le state
         dispatch(setAlbums(response.data));
         //on repasse le loading à false
@@ -59,6 +71,29 @@ export const fetchAlbumDetail = (id) => async dispatch => {
     } catch (error) {
         console.log(`Erreur lors de la récupération des détails de l'album: ${error}`);
         //on repasse le loading à false
+        dispatch(setLoading(false));
+    }
+}
+
+//on crée une méthode pour faire une recherche
+export const fetchSearch = (searchWord) => async dispatch => {
+    try {
+        //on passe loading à true
+        dispatch(setLoading(true));
+
+        const responseAlbums = await axios.get(`${API_URL}/albums?page=1&title=${searchWord}&isActive=true`);
+        const responseArtist = await axios.get(`${API_URL}/artists?page=1&name=${searchWord}&albums.isActive=true`);
+        const responseTitle = await axios.get(`${API_URL}/albums?page=1&songs.title=${searchWord}&isActive=true`);
+
+        dispatch(setSearchAlbum(responseAlbums.data));
+        dispatch(setSearchArtist(responseArtist.data));
+        dispatch(setSearchTitle(responseTitle.data));
+
+        //on repasse loading à false
+        dispatch(setLoading(false));
+    } catch (error) {
+        console.log(`Erreur lors de la recherche: ${error}`);
+        //on repasse loading à false
         dispatch(setLoading(false));
     }
 }

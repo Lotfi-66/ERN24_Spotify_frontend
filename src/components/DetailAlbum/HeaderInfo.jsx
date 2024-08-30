@@ -47,7 +47,7 @@ const HeaderInfo = ({ dataAlbum }) => {
 
     return (
         <div className="flex flex-col lg:flex-row items-center">
-            <Link to={'#'}>
+            <Link to={`/artist-detail/${dataAlbum?.artist?.id}`}>
             <img 
             src={imgPath} 
             alt={`image de l'artiste ${dataAlbum?.artist?.name} ?? Artiste inconnu`}
