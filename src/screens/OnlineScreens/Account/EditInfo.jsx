@@ -46,6 +46,7 @@ const EditInfo = () => {
     return (
         <div className='flex flex-1 flex-col h-screen justify-start items-center bg-black'>
             <h2 className='text-white font-bold text-xl py-5'>Modifier mes infos</h2>
+            <div className='text-red-700'>{error}</div>
             <form className='max-w-md mx-auto text-center' onSubmit={handleSubmit}>
                 <CustomInput
                     state={nicknameValue}
