@@ -14,7 +14,7 @@ const ArtistCard = ({ dataArtist }) => {
     return (
         <Link to={`/artist-detail/${artistId}`}>
             <div className='flex flex-col justify-center items-center bg-white_01 rounded-lg shadow-lg p-4'>
-                <div className='flex flex-col justify-center items-center'>
+                <div className='flex flex-col justify-center items-center '>
                     <img
                         src={imgPath}
                         alt={`Image de l'artiste ${name}`}
