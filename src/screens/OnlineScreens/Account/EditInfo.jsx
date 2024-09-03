@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import CustomInput from '../../../components/CustomInput'
 import { Link, useNavigate } from 'react-router-dom';
 import ButtonLoader from '../../../components/Loader/ButtonLoader';
+import { useAuthContext } from '../../../contexts/AuthContext';
 import { USER_INFOS } from '../../../constants/appConstant';
 import { checkUser } from '../../../services/userService';
-import { useAuthContext } from '../../../contexts/AuthContext';
 import axios from 'axios';
 import { API_ROOT, API_URL } from '../../../constants/apiConstant';
 
