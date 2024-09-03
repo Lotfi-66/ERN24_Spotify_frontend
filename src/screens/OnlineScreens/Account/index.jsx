@@ -19,7 +19,6 @@ const Account = () => {
     }, [])
 
     const { loading, userDetail } = useSelector(selectUserData);
-    console.log('userDetail', userDetail);
 
 
     //on récupère l'image de l'utilisateur dans ue constante

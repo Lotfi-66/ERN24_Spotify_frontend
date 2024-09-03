@@ -7,7 +7,8 @@ const userSlice = createSlice({
     initialState: {
         loading: false,
         userDetail: {},
-        avatars: []
+        avatars: [],
+        userFavorite: [],
     },
     reducers: {
         setLoading: (state, action) => {
@@ -18,11 +19,14 @@ const userSlice = createSlice({
         },
         setAvatars : (state, action) => {
             state.avatars = action.payload;
+        },
+        setUserFavorite: (state, action) => {
+            state.userFavorite = action.payload;
         }
     }
 });
 
-export const { setLoading, setUserDetail, setAvatars } = userSlice.actions;
+export const { setLoading, setUserDetail, setAvatars, setUserFavorite } = userSlice.actions;
 
 //on crée une méthode qui permet de récuperer les information d'un usere dans la bdd
 export const fetchUserDetail = (id) => async dispatch => {
@@ -54,6 +58,21 @@ export const fetchAvatars = () => async dispatch => {
         dispatch(setLoading(false));
     } catch (error) {
         console.log(`Erreur lors de la récupération des détails des avatars : ${error}`);
+        //on repasse le loading à false
+        dispatch(setLoading(false));
+    }
+}
+
+//on crée une méthode pour récupérer les favoris d'un user
+export const fetchUserFavorite = (id) => async dispatch => {
+    try {
+        //on passe le loading à true
+        dispatch(setLoading(true));
+        //on fait une requête à l'api
+        const response = await axios.get(`${API_URL}/users?page=1&id=${id}`);
+        dispatch(setUserFavorite(response.data['hydra:member'][0].albums));
+    } catch (error) {
+        console.log(`Erreur lors de la sélection des favoris : ${error}`);
         //on repasse le loading à false
         dispatch(setLoading(false));
     }
