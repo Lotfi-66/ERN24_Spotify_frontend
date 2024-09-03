@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { userAuthContext } from '../../contexts/AuthContext';
+import { useAuthContext } from '../../contexts/AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
 import CustomInput from '../../components/CustomInput';
 import ButtonLoader from '../../components/Loader/ButtonLoader';
@@ -14,7 +14,7 @@ const Login = () => {
 
     //on va récupérer la méthode signIn de notre context d'authentification
 
-    const { signIn } = userAuthContext();
+    const { signIn } = useAuthContext();
     //on récupère le hook de navigation
     const navigate = useNavigate();
 

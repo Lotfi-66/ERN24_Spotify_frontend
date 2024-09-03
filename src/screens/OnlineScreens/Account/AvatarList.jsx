@@ -4,14 +4,14 @@ import { fetchAvatars } from '../../../redux/user/userSlice'
 import { API_URL, AVATAR_URL } from '../../../constants/apiConstant'
 import { selectUserData } from '../../../redux/user/userSelector'
 import axios from 'axios'
-import { userAuthContext } from '../../../contexts/AuthContext'
+import { useAuthContext } from '../../../contexts/AuthContext'
 import { useNavigate } from 'react-router-dom'
 
 const AvatarList = () => {
     //on récupère le hook useDispatch pour poouvoir executer une méthode du slice
     const dispatch = useDispatch()
 
-    const { userId } = userAuthContext();
+    const { userId } = useAuthContext();
     //ont récupère le hook useNavigate
     const navigate = useNavigate();
 

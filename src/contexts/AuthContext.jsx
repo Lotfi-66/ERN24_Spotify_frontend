@@ -1,17 +1,16 @@
 import { createContext, useContext, useState } from "react";
 import { USER_INFOS } from "../constants/appConstant";
 
-
+//création du context d'authentification
 const AuthContext = createContext({
-
     userId: '', //state
-    email: '',
-    nickname: '',
-    setUserId: () => { }, //méthode pour modifier le state 
-    setEmail: () => { },
-    setNickname: () => { },
+    email: '', //state
+    nickname: '', //state
+    setUserId: () => { }, //méthode pour modifier le state userId
+    setEmail: () => { }, //méthode pour modifier le state email
+    setNickname: () => { }, //méthode pour modifier le state nickname
     signIn: async () => { }, //méthode pour se connecter
-    signOut: async () => { }, //méthode pour se deconnecter
+    signOut: async () => { }, //méthode pour se déconnecter
 });
 
 //on définit toute la mécanique de notre context
@@ -20,7 +19,7 @@ const AuthContextProvider = ({ children }) => {
     const [email, setEmail] = useState('');
     const [nickname, setNickname] = useState('');
 
-    //on definit la méthode signIn
+    //on définit la méthode signIn
     const signIn = async (user) => {
         try {
             setUserId(user.userId);
@@ -28,11 +27,10 @@ const AuthContextProvider = ({ children }) => {
             setNickname(user.nickname);
             localStorage.setItem(USER_INFOS, JSON.stringify(user));
         } catch (error) {
-            throw new Error('Erreur lors de la connexion : ${error}');
+            throw new Error(`Erreur lors de la connexion : ${error}`);
         }
     }
-
-    //on definit la méthode signIn
+    //on définit la méthode signOut
     const signOut = async () => {
         try {
             setUserId('');
@@ -40,24 +38,24 @@ const AuthContextProvider = ({ children }) => {
             setNickname('');
             localStorage.removeItem(USER_INFOS);
         } catch (error) {
-            throw new Error('Erreur lors de la déconnexion : ${error}');
+            throw new Error(`Erreur lors de la déconnexion : ${error}`);
         }
     }
 
     const value = {
-        userId, //state
+        userId,
         email,
         nickname,
-        setUserId, //méthode pour modifier le state 
+        setUserId,
         setEmail,
         setNickname,
-        signIn, //méthode pour se connecter
-        signOut, //méthode pour se deconnecter
+        signIn,
+        signOut,
     }
-    return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
+    return <AuthContext.Provider value={value} >{children}</AuthContext.Provider>
 }
 
 //création de notre propre hook pour utiliser notre context
-const userAuthContext = () => useContext(AuthContext);
+const useAuthContext = () => useContext(AuthContext);
 
-export { AuthContext, AuthContextProvider, userAuthContext };
+export { AuthContext, AuthContextProvider, useAuthContext };

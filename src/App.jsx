@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import { Outlet, useNavigate } from 'react-router-dom'
 import { USER_INFOS } from './constants/appConstant'
-import { IMAGE_URL} from './constants/apiConstant'
+import { IMAGE_URL } from './constants/apiConstant'
 import { checkUser } from './services/userService'
-import { userAuthContext } from './contexts/AuthContext'
+import { useAuthContext } from './contexts/AuthContext'
 import Sidebar from './components/Sidebar'
 import Topbar from './components/Topbar'
 import { useSelector } from 'react-redux'
@@ -11,7 +11,7 @@ import MusicPlayer from './components/MusicPlayer'
 
 const App = () => {
   const userInfo = JSON.parse(localStorage.getItem(USER_INFOS));
-  const { signOut } = userAuthContext();
+  const { signOut } = useAuthContext();
   const navigate = useNavigate();
   const { activeSong } = useSelector((state) => state.player);
 
@@ -51,7 +51,7 @@ const App = () => {
         </div>
         {activeSong?.title && (
           <div className="absolute h-28 bottom-0 left-0 right-0 animate-slideup bg-gradient-to-br from-white_01 to-black backdrop-blur-lg rounded-t-3xl z-10">
-            <MusicPlayer/>
+            <MusicPlayer />
           </div>
         )}
       </div>

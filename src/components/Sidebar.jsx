@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { userAuthContext } from '../contexts/AuthContext';
+import { useAuthContext} from '../contexts/AuthContext';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { dataAlbumNav, dataUserNav, imgLogo, styleIcon } from '../constants/appConstant';
 import NavLinks from './NavLinks';
@@ -9,7 +9,7 @@ import { HiOutlineMenu } from 'react-icons/hi';
 
 const Sidebar = () => {
     const [mobileMenu, setMobileMenu] = useState(false)
-    const { userId, signOut } = userAuthContext();
+    const { userId, signOut } = useAuthContext();
     const navigate = useNavigate();
 
     const handleLogout = () => {
